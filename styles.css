@@ -1,0 +1,850 @@
+/* Base Styles and Variables */
+:root {
+  --primary-color: #3F51B5;      /* Indigo 500 */
+  --primary-variant: #303F9F;    /* Indigo 700 */
+  --secondary-color: #FFC107;    /* Amber 500 - Bright Pastel Accent */
+  --background-color: #ECEFF1;   /* Blue Gray 50 */
+  --surface-color: #FFFFFF;      /* White */
+  --error-color: #D32F2F;        /* Red 700 */
+  --on-primary: #FFFFFF;         /* White */
+  --on-secondary: #000000;       /* Black */
+  --on-background: #000000;      /* Black */
+  --on-surface: #000000;         /* Black */
+  --on-error: #FFFFFF;           /* White */
+}
+
+/* General Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--on-background);
+  line-height: 1.5;
+  max-width: 100%;
+  overflow-x: hidden;
+  padding: 0.5rem;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  color: var(--on-surface);
+}
+
+label {
+  color: var(--on-surface);
+}
+
+/* Ensure text contrasts against primary colors */
+.header-content, .info-item {
+  color: var(--on-primary);
+}
+
+.info-item label,
+.header-content label {
+  color: var(--on-primary);
+}
+
+.info-item span,
+.header-content span,
+.info-item select,
+.header-content select {
+  color: var(--on-primary);
+}
+
+.info-item select {
+  background-color: var(--surface-color);
+  color: var(--on-surface);
+}
+
+/* Base Shadows */
+.shadow {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.shadow-hover:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+
+
+/* Header Styles */
+header {
+  background-color: var(--primary-color);
+  color: var(--on-primary);
+  padding: 0.5rem;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Character Info Grid */
+.character-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 0.5rem;
+}
+
+.info-item {
+  background-color: var(--primary-variant);
+  padding: 0.5rem;
+  border-radius: 4px;
+  color: var(--on-primary);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.info-item label {
+  font-size: 0.8rem;
+  margin-bottom: 0.25rem;
+}
+
+.info-item span, .info-item select {
+  font-size: 0.9rem;
+}
+
+.info-item select {
+  background-color: var(--surface-color);
+  color: var(--on-surface);
+  border: none;
+  padding: 0.25rem;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.info-item:hover {
+  background-color: var(--primary-color);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Ensure labels and text inside info-item have correct color */
+.info-item label,
+.info-item span,
+.info-item select {
+  color: var(--on-primary);
+}
+
+/* Tabs and Subtabs Styles */
+.tab-container {
+  background-color: var(--surface-color);
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tabs, .subtabs {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: var(--surface-color);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.tablink, .subtablink {
+  flex-grow: 1;
+  background-color: transparent;
+  border: none;
+  color: var(--on-surface);
+  padding: 0.5rem 0.25rem;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s, color 0.3s;
+  font-size: 0.8rem;
+}
+
+.tablink:hover, .subtablink:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.tablink.active, .subtablink.active {
+  background-color: var(--primary-color);
+  color: var(--on-primary);
+}
+
+.tabcontent, .subtabcontent {
+  display: none;
+  padding: 0.5rem 0;
+}
+
+/* Modals Styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;  /* Changed from overflow: auto to overflow-y: auto */
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: var(--surface-color);
+  margin: 5% auto;
+  padding: 0.5rem;
+  border-radius: 4px;
+  width: 95%;
+  max-width: 800px;  /* Increased max-width for better layout */
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  padding-bottom: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: var(--on-surface);
+}
+
+.modal-body {
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+/* Modal Grid */
+.modal-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 0.5rem;
+}
+
+/* Item Cards in Modals */
+.modal-grid .item-card {
+  background-color: var(--surface-color);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+  padding: 0.5rem;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.modal-grid .item-card:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.modal-grid .item-card .item-name {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: 0.25rem;
+}
+
+.modal-grid .item-card .item-details {
+  font-size: 0.8rem;
+  color: var(--on-surface);
+}
+
+/* Adjusting specific modals */
+#armor-modal .modal-body,
+#utility-modal .modal-body,
+#equipment-modal .modal-body,
+#add-item-modal .modal-body {
+  padding: 0.5rem;
+}
+
+#armor-modal .modal-grid,
+#utility-modal .modal-grid,
+#equipment-modal .modal-grid,
+#add-item-modal .modal-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 0.5rem;
+}
+
+#item-detail-modal {
+  z-index: 1001; /* Make sure this is higher than the equipment modal */
+}
+
+#equipment-modal {
+  z-index: 1000;
+}
+
+#armor-modal .item-card,
+#utility-modal .item-card,
+#equipment-modal .item-card,
+#add-item-modal .item-card {
+  background-color: var(--surface-color);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+  padding: 0.5rem;
+  cursor: pointer;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#armor-modal .item-card:hover,
+#utility-modal .item-card:hover,
+#equipment-modal .item-card:hover,
+#add-item-modal .item-card:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+#armor-modal .item-card .item-name,
+#utility-modal .item-card .item-name,
+#equipment-modal .item-card .item-name,
+#add-item-modal .item-card .item-name {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: 0.25rem;
+}
+
+#armor-modal .item-card .item-details,
+#utility-modal .item-card .item-details,
+#equipment-modal .item-card .item-details,
+#add-item-modal .item-card .item-details {
+  font-size: 0.8rem;
+  color: var(--on-surface);
+}
+
+/* Styles Enhancement Modal */
+.enhancement-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  background-color: var(--surface-color);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 80%;
+  width: 400px;
+  text-align: center;
+  display: none;
+}
+
+.enhancement-popup h2 {
+  color: var(--primary-color);
+  margin-bottom: 10px;
+}
+
+.enhancement-popup h3 {
+  color: var(--secondary-color);
+  margin-bottom: 15px;
+}
+
+.enhancement-popup p {
+  margin-bottom: 20px;
+}
+
+#close-enhancement-popup {
+  background-color: var(--primary-color);
+  color: var(--on-primary);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#close-enhancement-popup:hover {
+  background-color: var(--primary-variant);
+}
+
+
+/* Styles for race and class dropdowns */
+#race-select,
+#class-select {
+    color: #333333; /* Dark gray color */
+    background-color: var(--surface-color);
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    padding: 0.5rem;
+    border-radius: 4px;
+    width: 100%;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+#race-select option,
+#class-select option {
+    color: #333333; /* Dark gray color */
+    background-color: var(--surface-color);
+}
+
+/* Style for the selected option */
+#race-select option:checked,
+#class-select option:checked {
+    background-color: var(--primary-color);
+    color: var(--on-primary);
+}
+
+/* Style for hover state */
+#race-select option:hover,
+#class-select option:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Ensuring multiple cards per row on larger screens */
+@media (min-width: 600px) {
+  .modal-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 599px) {
+  .modal-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  }
+}
+
+/* Form Elements Styles */
+button, .button {
+  background-color: var(--secondary-color);
+  color: var(--on-secondary);
+  border: none;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  font-size: 0.8rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+button:hover, .button:hover {
+  background-color: var(--primary-color);
+  color: var(--on-primary);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+input[type="text"], input[type="number"], select {
+  background-color: var(--surface-color);
+  color: var(--on-surface);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  padding: 0.5rem;
+  border-radius: 4px;
+  width: 100%;
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+
+input[type="text"]:focus, input[type="number"]:focus, select:focus {
+  border-color: var(--primary-color);
+  outline: none;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+/* Grid Layouts */
+.inventory-grid, .abilities-grid, .traits-grid, .modal-grid, .actions-grid, .enhancements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 0.5rem;
+}
+
+/* Vitals Styles */
+.vitals-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.vital-category {
+  background-color: var(--surface-color);
+  padding: 0.5rem;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.category-title {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--on-surface);
+  margin-bottom: 0.5rem;
+}
+
+.vitals-row {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+
+.vital-card {
+  flex: 1;
+  background-color: var(--surface-color);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  padding: 0.5rem;
+  border-radius: 4px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.vital-name {
+  font-size: 0.9rem;
+  color: var(--on-surface);
+  margin-bottom: 0.25rem;
+}
+
+.vital-score {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.vital-buttons {
+  display: flex;
+  gap: 0.25rem;
+  justify-content: center;
+  margin-top: 0.25rem;
+}
+
+.vital-button {
+  background-color: var(--primary-color);
+  color: var(--on-primary);
+  border: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  font-size: 0.8rem;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.vital-button:hover {
+  background-color: var(--primary-variant);
+}
+
+/* Skills Styles */
+.skills-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 0.5rem;
+}
+
+.skill-category {
+  background-color: var(--surface-color);
+  padding: 0.5rem;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 0.5rem;
+}
+
+.skill-card {
+  background-color: var(--surface-color);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  padding: 0.5rem;
+  border-radius: 4px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.skill-name {
+  font-size: 0.8rem;
+  color: var(--on-surface);
+  margin-bottom: 0.25rem;
+}
+
+.skill-score {
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.skill-buttons {
+  display: flex;
+  gap: 0.25rem;
+  justify-content: center;
+  margin-top: 0.25rem;
+}
+
+.skill-button {
+  background-color: var(--primary-color);
+  color: var(--on-primary);
+  border: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  font-size: 0.8rem;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.skill-button:hover {
+  background-color: var(--primary-variant);
+}
+
+/* Equipment Styles */
+.equipment-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.equipment-nav {
+  display: flex;
+  justify-content: space-around;
+  background-color: var(--surface-color);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.equipment-nav-btn {
+  flex-grow: 1;
+  background-color: transparent;
+  border: none;
+  color: var(--on-surface);
+  padding: 0.5rem 0;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s, color 0.3s;
+  font-size: 0.8rem;
+}
+
+.equipment-nav-btn:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.equipment-nav-btn.active {
+  background-color: var(--primary-color);
+  color: var(--on-primary);
+}
+
+.equipment-section {
+  display: none;
+}
+
+.equipment-section.active {
+  display: block;
+}
+
+.equipment-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 0.5rem;
+}
+
+.equipment-card {
+  background-color: var(--surface-color);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+  position: relative;
+  text-align: center;
+  cursor: pointer;
+  padding: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.equipment-card:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.equipment-slot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.slot-label {
+  font-size: 0.7rem;
+  color: var(--on-surface);
+  margin-bottom: 0.25rem;
+}
+
+.equipment-slot-content {
+  font-size: 0.8rem;
+  color: var(--on-surface);
+}
+
+/* Spell and Ability Styles */
+.spell-card, .ability-card, .action-card, .enhancement-card {
+  background-color: var(--surface-color);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+  padding: 0.5rem;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.spell-name, .ability-name, .action-name, .enhancement-name {
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: 0.25rem;
+}
+
+.spell-details, .ability-details, .action-details, .enhancement-details {
+  font-size: 0.8rem;
+  color: var(--on-surface);
+}
+
+.spell-card:hover, .ability-card:hover, .action-card:hover, .enhancement-card:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Inventory Styles */
+.inventory-item-card {
+  background-color: var(--surface-color);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+  padding: 0.5rem;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.inventory-item-name {
+  font-size: 0.9rem;
+  color: var(--on-surface);
+  margin-bottom: 0.25rem;
+}
+
+.inventory-item-details {
+  font-size: 0.8rem;
+  color: var(--on-surface);
+}
+
+.inventory-item-card:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Utility Styles */
+.search-container, .filter-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.search-container input, .filter-container select {
+  flex: 1;
+  font-size: 0.8rem;
+}
+
+.utility-card {
+  background-color: var(--surface-color);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+  padding: 0.5rem;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.utility-card:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* AP Styles */
+#ap-container {
+  position: relative;
+  cursor: pointer;
+}
+
+#ap-buttons {
+  display: none;
+  position: absolute;
+  top: calc(100% + 0.25rem);
+  right: 0;
+  background-color: var(--surface-color);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+  padding: 0.25rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#ap-container:hover #ap-buttons {
+  display: flex;
+}
+
+#ap-buttons button {
+  background-color: var(--primary-color);
+  color: var(--on-primary);
+  border: none;
+  padding: 0.25rem 0.5rem;
+  margin: 0 0.125rem;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+#ap-buttons button:hover {
+  background-color: var(--primary-variant);
+}
+
+/* Hidden Class */
+.hidden {
+  display: none !important;
+}
+
+/* Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-variant);
+}
+
+/* Animation Keyframes */
+@keyframes popupFadeIn {
+  from { opacity: 0; transform: translate(-50%, -60%); }
+  to { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+/* Responsive Styles */
+@media (min-width: 600px) {
+  html { font-size: 14px; }
+}
+
+@media (min-width: 900px) {
+  html { font-size: 16px; }
+}
+
+@media (max-width: 599px) {
+  html { font-size: 14px; }
+  .character-info-grid {
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  }
+}
+
+@media (max-width: 400px) {
+  html { font-size: 12px; }
+  .tablink, .subtablink {
+    font-size: 0.7rem;
+    padding: 0.25rem;
+  }
+  .equipment-card, .skill-card, .vital-card {
+    padding: 0.25rem;
+  }
+}

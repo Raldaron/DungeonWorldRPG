@@ -1,0 +1,51 @@
+{
+  "ammunition": {
+    "Arrow of Enthusiastic Double Gonorrhea": {
+        "itemName": "Arrow of Enthusiastic Double Gonorrhea",
+        "itemType": "Ammunition",
+        "effect": "Inflicts Enthusiastic Double Gonorrhea on the target.",
+        "duration": "Until cured",
+        "damage": "20d6 + Poison Effect",
+        "range": "N/A (depends on the bow)",
+        "rarity": "Rare",
+        "statBuffs": {},
+        "skillBuffs": {},
+        "abilities": [],
+        "hpBuffs": [],
+        "mpBuffs": []
+    },
+    "Bolt of Ophiotaurus": {
+        "itemName": "Bolt of Ophiotaurus",
+        "itemType": "Ammunition",
+        "effect": "Strips a deity of invulnerability for fifteen seconds when shot into their eye.",
+        "duration": "15 seconds",
+        "damage": "1d8",
+        "range": "N/A (depends on the crossbow)",
+        "rarity": "Legendary",
+        "statBuffs": {},
+        "skillBuffs": {},
+        "abilities": [
+            {
+                "name": "Divine Strike",
+                "description": "Temporarily removes a deity's invulnerability."
+            }
+        ],
+        "hpBuffs": [],
+        "mpBuffs": []
+    },
+    "Bolt of Petrify Rock Class": {
+        "itemName": "Bolt of Petrify Rock Class",
+        "itemType": "Ammunition",
+        "effect": "Imbues a rock-class target with the \"Petrified\" status condition.",
+        "duration": "Permanent until cured",
+        "damage": "1d8",
+        "range": "N/A (depends on the crossbow)",
+        "rarity": "Epic",
+        "statBuffs": {},
+        "skillBuffs": {},
+        "abilities": [],
+        "hpBuffs": [],
+        "mpBuffs": []
+    }
+  }
+}
