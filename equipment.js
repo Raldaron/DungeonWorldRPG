@@ -609,41 +609,41 @@ const EquipmentModule = {
         console.log(`Equipping item: ${itemKey}`);
         const item = this.items[itemKey];
         const slot = document.getElementById(this.selectedSlot);
-
+        
         if (!slot || !item) {
             console.error(`Failed to equip item: ${itemKey}. Slot or item not found.`);
             return;
         }
-
+    
         // Unequip current item if there is one
         if (slot.dataset.equippedItem) {
             this.unequipItem(this.selectedSlot);
         }
-
+    
         // Update slot content and dataset
         this.updateSlotContent(slot, item);
         slot.dataset.equippedItem = itemKey;
-
+        
         // Update equippedItems
         this.equippedItems[this.selectedSlot] = item;
-
+        
         console.log(`Item ${itemKey} equipped successfully to ${this.selectedSlot}`);
         console.log('Updated equipped items:', this.equippedItems);
-
+    
         // Apply item bonuses
         this.applyItemBonuses(item);
-
+        
         // Handle equipment spells
         this.handleEquipmentSpells(item, true);
-
+        
         // Update related modules
         this.updateRelatedModules(item);
-
+    
         // Handle item actions
         if (item.itemType === 'Weapon') {
             ActionModule.addAction(item);
         }
-
+    
         this.closeModals();
         this.refreshDisplays();
         EnhancementModule.refreshEnhancements();
@@ -661,18 +661,18 @@ const EquipmentModule = {
                     this.handleItemAction(itemKey, false);
                 }
             }
-
+    
             // Clear slot content but keep the label
             const slotLabel = slot.dataset.slotType || slot.id;
             slot.innerHTML = `<div class="slot-label">${this.formatSlotLabel(slotLabel)}</div>`;
             slot.dataset.equippedItem = '';
-
+    
             // Remove from equippedItems
             delete this.equippedItems[slotId];
-
+    
             console.log(`Item unequipped from slot ${slotId}`);
             console.log('Updated equipped items:', this.equippedItems);
-
+    
             // Re-add the event listener
             slot.addEventListener('click', () => this.handleSlotClick(slot));
         }
@@ -685,14 +685,14 @@ const EquipmentModule = {
     updateSlotContent(slot, item) {
         const content = document.createElement('div');
         content.className = 'equipment-slot-content';
-
+    
         if (item) {
             content.textContent = item.name;
         } else {
             const slotLabel = slot.dataset.slotType || slot.id;
             content.innerHTML = `<div class="slot-label">${this.formatSlotLabel(slotLabel)}</div>`;
         }
-
+    
         // Clear existing content
         slot.innerHTML = '';
         slot.appendChild(content);
